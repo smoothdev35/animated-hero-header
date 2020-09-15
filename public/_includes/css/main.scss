@@ -1,0 +1,253 @@
+@import "normalize";
+@font-face {
+  font-family: "decovar";
+  src: url("//rawgit.com/TypeNetwork/fb-Decovar/master/fonts/DecovarAlpha-VF.ttf");
+}
+
+:root{
+  @include normalize();
+}
+
+body {
+  background: black;
+  overflow:hidden;
+}
+
+@mixin placeLeaf($x, $y, $r, $s) {
+  position: absolute;
+  clip-path: url("#leaf");
+  background: #ff4500;
+  width: 10vw;
+  height: 15vw;
+  top: $y + vw;
+  left: $x + vw;
+  transform: rotate($r + deg) scale($s);
+}
+
+.scene {
+  --main: #ff4500;
+  --neu-dark: #9c2a00;
+  --neu-light: #ff6e00;
+  width: 100vw;
+  height: 70vw;
+  background: url("https://ik.imagekit.io/g0osqsaljoz/Random/movingtree_GnWaL8TcY.jpg");
+  background-size: contain;
+  background-repeat: repeat-x;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  .overlay {
+    position: absolute;
+    background: var(--main);
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    transition: all 1s ease;
+    &.out {
+      background: transparent;
+    }
+  }
+  .leaf.one {
+    @include placeLeaf(10, 0, 160, 5);
+  }
+  .leaf.two {
+    @include placeLeaf(60, 45, 150, 9);
+  }
+  .leaf.three {
+    @include placeLeaf(10, 25, -45, 8);
+  }
+  .leaf.four {
+    @include placeLeaf(0, 55, 25, 7);
+  }
+  .leaf.five {
+    @include placeLeaf(25, 50, 0, 7);
+  }
+  .leaf.six {
+    @include placeLeaf(60, 0, 120, 5);
+  }
+  .leaf.seven {
+    @include placeLeaf(40, 35, -135, 5);
+  }
+  .leaf.eight {
+    @include placeLeaf(66, 22, -30, 7);
+  }
+  .leaf.nine {
+    @include placeLeaf(35, 10, -25, 9);
+  }
+  .leaf.ten {
+    @include placeLeaf(90, 0, 230, 7);
+  }
+  .leaf.eleven {
+    @include placeLeaf(85, 50, 45, 5);
+  }
+  .leaf.twelve {
+    @include placeLeaf(85, 27, 0, 6);
+  }
+  svg {
+    width: 100%;
+    position: absolute;
+  }
+  @keyframes pushUp {
+    0% {
+      text-shadow: 0px 0px 0px var(--neu-dark), 0px 0px 0px var(--neu-light),
+        0px 0px 0px var(--neu-dark), 0px 0px 0px var(--neu-light),
+        0px 0px 0px var(--neu-dark), 0px 0px 0px var(--neu-dark),
+        0px 0px 0px var(--neu-dark), 0px 0px 0px var(--neu-dark),
+        0px 0px 0px var(--neu-dark), 0px 0px 0px var(--neu-dark),
+        0px 0px 0px var(--neu-dark), 0px 0px 0px var(--neu-dark);
+      color: #ff4500;
+      font-variation-settings: "BLDA" 0, "SKLB" 0;
+    }
+    50% {
+      text-shadow: 1px 1px 1px var(--neu-dark), -1px -1px 1px var(--neu-light),
+        2px 2px 2px var(--neu-dark), -2px -2px 2px var(--neu-light),
+        3px 3px 2px var(--neu-dark), 4px 4px 2px var(--neu-dark),
+        5px 5px 2px var(--neu-dark), 6px 6px 2px var(--neu-dark),
+        7px 7px 2px var(--neu-dark), 8px 8px 2px var(--neu-dark),
+        9px 9px 2px var(--neu-dark), 10px 10px 2px var(--neu-dark);
+      color: #ff4500;
+      font-variation-settings: "BLDA" 0, "SKLB" 1000;
+    }
+    100% {
+      color: transparent;
+      background: url("https://ik.imagekit.io/g0osqsaljoz/Random/andrew-buchanan-Ipvjzj5YBu4-unsplash-min_7D2suriQNa_.jpg");
+      background-size: contain;
+      background-clip: text;
+      font-variation-settings: "BLDA" 800, "SKLB" 1000;
+      text-shadow: none;
+    }
+  }
+  .neo {
+    margin: 0;
+    position: relative;
+    letter-spacing: 0.75vw;
+    color: #ff4500;
+    transform: translate(15%, -35%);
+    font-family: "decovar";
+    font-weight: 600;
+    font-variation-settings: "BLDA" 0, "SKLB" 0;
+    font-size: 10vw;
+    text-shadow: none;
+    opacity: 0;
+    z-index: 0;
+    &:before {
+      content: "NATURE";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      text-shadow: 1px 1px 1px rgba(#183600, 0), -1px 1px 1px rgba(#183600, 0),
+        -1px -1px 1px rgba(#183600, 0), 1px -1px 1px rgba(#183600, 0);
+      transition: all 0.3s linear 1.5s;
+    }
+    &.out {
+      opacity: 1;
+      animation: pushUp 2s ease forwards;
+      &:before {
+        text-shadow: 2px 2px 1px rgba(#183600, 0.4),
+          -2px 2px 1px rgba(#183600, 0.4), -2px -2px 1px rgba(#183600, 0.4),
+          2px -2px 1px rgba(#183600, 0.4);
+      }
+    }
+    @keyframes retro {
+      0% {
+        color: transparent;
+        background: url("https://ik.imagekit.io/g0osqsaljoz/Random/andrew-buchanan-Ipvjzj5YBu4-unsplash-min_7D2suriQNa_.jpg");
+        background-size: contain;
+        background-clip: text;
+        font-variation-settings: "BLDA" 800, "SKLB" 1000;
+        text-shadow: none;
+        letter-spacing: 0.75vw;
+      }
+      99% {
+        color: white;
+        background: url("https://ik.imagekit.io/g0osqsaljoz/Random/andrew-buchanan-Ipvjzj5YBu4-unsplash-min_7D2suriQNa_.jpg");
+        background-size: contain;
+        background-clip: text;
+        font-variation-settings: "BLDA" 0, "SKLB" 0;
+        text-shadow: none;
+      }
+      100% {
+        color: white;
+        font-variation-settings: "BLDA" 0, "SKLB" 0;
+        text-shadow: none;
+        letter-spacing: 0.5vw;
+      }
+    }
+    &.out.back {
+      animation: retro 1s ease forwards;
+      &:before {
+        text-shadow: 2px 2px 1px rgba(#000, 0.4), -2px 2px 1px rgba(#000, 0.4),
+          -2px -2px 1px rgba(#000, 0.4), 2px -2px 1px rgba(#000, 0.4);
+      }
+    }
+  }
+  .sub {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 2vw;
+    color: white;
+    letter-spacing: 0.4vw;
+    align-self: center;
+    transform: translate(-31.85vw, 100%);
+    text-shadow: 1px 1px 1px rgba(#000, 0.8), -1px 1px 1px rgba(#000, 0.8),
+      -1px -1px 1px rgba(#000, 0.8), 1px -1px 1px rgba(#000, 0.8);
+    opacity: 0;
+  }
+  .move {
+    font-family: "decovar";
+    font-weight: 600;
+    font-size: 7vw;
+    color: transparent;
+    position: relative;
+    transform: translate(-140%, 80%);
+    text-shadow: -0px -0px 0px rgba(#183600, 0), -0px -0px 0px rgba(#183600, 0),
+      -0px -0px 0px rgba(#183600, 0), -0px -0px 0px rgba(#183600, 0),
+      -0px -0px 0px rgba(#183600, 0);
+    letter-spacing: 0.3vw;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 95%;
+      height: 67.5%;
+      top: 35%;
+      left: 12.5%;
+      z-index: -1;
+      background: var(--main);
+      transform: scaleX(0);
+      transform-origin: top left;
+      transition: transform 1s ease;
+    }
+    @keyframes shift {
+      0% {
+        color: transparent;
+        text-shadow: -0px -0px 0px rgba(#183600, 0.7),
+          -0px -0px 0px rgba(#183600, 0.7), -0px -0px 0px rgba(#183600, 0.7),
+          -0px -0px 0px rgba(#183600, 0.7), -0px -0px 0px rgba(#183600, 0);
+        font-variation-settings: "WMX2" 0;
+      }
+      100% {
+        color: white;
+        text-shadow: -1px -1px 1px rgba(#183600, 0.7),
+          -2px -2px 1px rgba(#183600, 0.7), -3px -3px 1px rgba(#183600, 0.7),
+          -4px -4px 1px rgba(#183600, 0.7), -5px -5px 1px rgba(#183600, 0.7);
+        font-variation-settings: "WMX2" 500;
+      }
+    }
+    &.out {
+      animation: shift 0.4s linear forwards;
+      &:before {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+@media (min-width: 1017px) {
+  .scene {
+    background-size: cover;
+    transform: translateY(-26%);
+  }
+}
