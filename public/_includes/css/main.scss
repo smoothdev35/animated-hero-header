@@ -1,16 +1,16 @@
 @import "normalize";
 @font-face {
   font-family: "decovar";
-  src: url("//rawgit.com/TypeNetwork/fb-Decovar/master/fonts/DecovarAlpha-VF.ttf");
+  src: url("https://rawgit.com/TypeNetwork/fb-Decovar/master/fonts/DecovarAlpha-VF.ttf");
 }
 
-:root{
+html{
   @include normalize();
 }
 
 body {
   background: black;
-  overflow:hidden;
+  overflow-x:hidden;
 }
 
 @mixin placeLeaf($x, $y, $r, $s) {
@@ -30,7 +30,7 @@ body {
   --neu-light: #ff6e00;
   width: 100vw;
   height: 70vw;
-  background: url("https://ik.imagekit.io/g0osqsaljoz/Random/movingtree_GnWaL8TcY.jpg");
+  background: url("movingtree.jpg");
   background-size: contain;
   background-repeat: repeat-x;
   display: flex;
